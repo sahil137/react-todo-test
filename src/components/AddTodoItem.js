@@ -16,6 +16,9 @@ class AddTodoItem extends Component {
 
   onSubmit = (event) => {
     event.preventDefault();
+    if (this.state.title === '') {
+      return;
+    }
     this.props.addTodo(this.state.title);
     this.setState({
       title: '',
@@ -30,12 +33,12 @@ class AddTodoItem extends Component {
           type="text"
           name="title"
           placeholder="Add Todo ..."
-          // value={this.state.title}
+          value={this.state.title}
           style={styles.input}
           onChange={this.onChange}
         />
         <button type="submit" className="btn btn-primary btn-sm">
-          Submit
+          Add
         </button>
       </form>
     );
