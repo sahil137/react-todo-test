@@ -15,7 +15,7 @@ class App extends Component {
   // get todo items when component renders
   componentDidMount() {
     axios
-      .get('https://jsonplaceholder.typicode.com/todos?_limit=15')
+      .get('https://jsonplaceholder.typicode.com/todos?_limit=12')
       .then((result) => {
         // console.log(result.data);
         this.setState({
@@ -38,12 +38,23 @@ class App extends Component {
       });
   };
 
+  // delete todo and filter it out from todo list
+  deleteTodo = (id) => {
+    axios
+      .delete(`https://jsonplaceholder.typicode.com/todos/${id}`)
+      .then((result) => {
+        this.setState({
+          todos: [...this.state.todos.filter((todo) => todo.id !== id)],
+        });
+      });
+  };
+
   render() {
     return (
       <div className="App" style={styles.app}>
         <Header />
         <AddTodoItem addTodo={this.addTodo} />
-        <TodoList todos={this.state.todos} />
+        <TodoList todos={this.state.todos} deleteTodo={this.deleteTodo} />
       </div>
     );
   }
