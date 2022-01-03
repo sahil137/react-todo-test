@@ -16,7 +16,7 @@ export class Header extends Component {
 
 const styles = {
   header: {
-    width: '85%',
+    width: '50%',
     color: 'white',
   },
 };

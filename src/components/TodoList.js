@@ -7,7 +7,7 @@ class TodoList extends Component {
         {this.props.todos.map((todo) => (
           <li class="list-group-item d-flex justify-content-between align-items-center">
             {todo.title}
-            <button type="button" class="btn btn-danger btn-sm">
+            <button type="button" className="btn btn-danger btn-sm">
               Delete
             </button>
           </li>
@@ -19,7 +19,7 @@ class TodoList extends Component {
 
 const styles = {
   todo: {
-    width: '85%',
+    width: '50%',
   },
 };
 

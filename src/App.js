@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Header from './components/Header';
 import TodoList from './components/TodoList';
+import AddTodoItem from './components/AddTodoItem';
 class App extends Component {
   constructor(props) {
     super(props);
@@ -26,6 +27,7 @@ class App extends Component {
     return (
       <div className="App" style={styles.app}>
         <Header />
+        <AddTodoItem />
         <TodoList todos={this.state.todos} />
       </div>
     );
