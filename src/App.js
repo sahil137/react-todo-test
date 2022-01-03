@@ -12,6 +12,7 @@ class App extends Component {
     };
   }
 
+  // get todo items when component renders
   componentDidMount() {
     axios
       .get('https://jsonplaceholder.typicode.com/todos?_limit=15')
@@ -23,11 +24,25 @@ class App extends Component {
       });
   }
 
+  // add todo
+
+  addTodo = (title) => {
+    axios
+      .post('https://jsonplaceholder.typicode.com/todos', {
+        title,
+      })
+      .then((result) => {
+        this.setState({
+          todos: [...this.state.todos, result.data],
+        });
+      });
+  };
+
   render() {
     return (
       <div className="App" style={styles.app}>
         <Header />
-        <AddTodoItem />
+        <AddTodoItem addTodo={this.addTodo} />
         <TodoList todos={this.state.todos} />
       </div>
     );
