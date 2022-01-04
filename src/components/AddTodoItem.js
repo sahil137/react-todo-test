@@ -23,7 +23,6 @@ class AddTodoItem extends Component {
     this.setState({
       title: '',
     });
-    // event.target.value = '';
   };
 
   render() {

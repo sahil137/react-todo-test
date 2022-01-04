@@ -49,12 +49,37 @@ class App extends Component {
       });
   };
 
+  // update todo
+  updateTodo = (id) => {
+    let status;
+    this.setState({
+      todos: this.state.todos.map((todo) => {
+        if (todo.id === id) {
+          todo.completed = !todo.completed;
+          status = todo.completed;
+        }
+        return todo;
+      }),
+    });
+    axios
+      .put(`https://jsonplaceholder.typicode.com/todos/${id}`, {
+        completed: status,
+      })
+      .then((result) => {
+        console.log(result.data);
+      });
+  };
+
   render() {
     return (
       <div className="App" style={styles.app}>
         <Header />
         <AddTodoItem addTodo={this.addTodo} />
-        <TodoList todos={this.state.todos} deleteTodo={this.deleteTodo} />
+        <TodoList
+          todos={this.state.todos}
+          deleteTodo={this.deleteTodo}
+          updateTodo={this.updateTodo}
+        />
       </div>
     );
   }
